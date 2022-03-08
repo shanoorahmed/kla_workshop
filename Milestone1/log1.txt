@@ -1,0 +1,16 @@
+2022-03-08 10:59:53.474064;M1A_Workflow Entry
+2022-03-08 10:59:53.474114;M1A_Workflow.TaskA Entry
+2022-03-08 10:59:53.474119;M1A_Workflow.TaskA Executing ('TaskA_Input', '1')
+2022-03-08 10:59:54.479242;M1A_Workflow.TaskA Exit
+2022-03-08 10:59:54.479283;M1A_Workflow.TaskB Entry
+2022-03-08 10:59:54.479292;M1A_Workflow.TaskB Executing ('TaskB_Input', '2')
+2022-03-08 10:59:56.484333;M1A_Workflow.TaskB Exit
+2022-03-08 10:59:56.484393;M1A_Workflow.FlowA Entry
+2022-03-08 10:59:56.484410;M1A_Workflow.FlowA.TaskC Entry
+2022-03-08 10:59:56.484420;M1A_Workflow.FlowA.TaskC Executing ('TaskC_Input', '3')
+2022-03-08 10:59:59.485122;M1A_Workflow.FlowA.TaskC Exit
+2022-03-08 10:59:59.485159;M1A_Workflow.FlowA.TaskD Entry
+2022-03-08 10:59:59.485168;M1A_Workflow.FlowA.TaskD Executing ('TaskD_Input', '4')
+2022-03-08 11:00:03.490205;M1A_Workflow.FlowA.TaskD Exit
+2022-03-08 11:00:03.490366;M1A_Workflow.FlowA Exit
+2022-03-08 11:00:03.490411;M1A_Workflow Exit
