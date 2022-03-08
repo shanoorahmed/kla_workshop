@@ -3,12 +3,13 @@ from yaml.loader import SafeLoader
 
 from datetime import datetime
 import time
+import threading
 
-with open('Milestone1A.yaml') as f:
+with open('Milestone1B.yaml') as f:
     workflow = yaml.load(f, Loader=SafeLoader)
 
-
-file1 = open("log1.txt","w")
+file1 = open("log2.txt","w")
+threads = []
 
 def flow(work, execution, activities):
     if execution == "Sequential":
@@ -23,8 +24,24 @@ def flow(work, execution, activities):
                 task(newwork,activities[act]['Function'],activities[act]['Inputs'])
             now = datetime.now()
             file1.write(f"{now};{work}.{act} Exit\n")
-    if execution == "Concurrent":
-        print("NO")
+    elif execution == "Concurrent":
+        for act in activities:
+            now = datetime.now()
+            file1.write(f"{now};{work}.{act} Entry\n")
+            if activities[act]['Type'] == "Flow":
+                newwork = work + '.' + act
+                thread = threading.Thread(target=flow,args=[newwork,activities[act]['Execution'],activities[act]['Activities']])
+                thread.start()
+                threads.append([thread,newwork])
+            elif activities[act]['Type'] == "Task":
+                newwork = work + '.' + act
+                thread = threading.Thread(target=task,args=[newwork,activities[act]['Function'],activities[act]['Inputs']])
+                thread.start()
+                threads.append([thread,newwork])
+        for thread in threads:
+            thread[0].join()
+            now = datetime.now()   
+            file1.write(f"{now};{thread[1]} Exit\n")
 
 def task(work,function,inputs):
     if function == 'TimeFunction':
