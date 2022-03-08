@@ -28,10 +28,10 @@ def flow(work, execution, activities):
 
 def task(work,function,inputs):
     if function == 'TimeFunction':
-        input_name = inputs['FunctionInput']
+        fun_input = inputs['FunctionInput']
         exc_time = inputs['ExecutionTime']
         now = datetime.now()
-        file1.write(f"{now};{work} Executing {input_name, exc_time}\n")
+        file1.write(f"{now};{work} Executing {function} ({fun_input}, {exc_time})\n")
         time.sleep(int(exc_time))
 
 for work in workflow:
