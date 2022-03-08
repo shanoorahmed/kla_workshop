@@ -7,7 +7,6 @@ import time
 with open('Milestone1A.yaml') as f:
     workflow = yaml.load(f, Loader=SafeLoader)
 
-
 file1 = open("log1.txt","w")
 
 def flow(work, execution, activities):
@@ -23,8 +22,6 @@ def flow(work, execution, activities):
                 task(newwork,activities[act]['Function'],activities[act]['Inputs'])
             now = datetime.now()
             file1.write(f"{now};{work}.{act} Exit\n")
-    if execution == "Concurrent":
-        print("NO")
 
 def task(work,function,inputs):
     if function == 'TimeFunction':
